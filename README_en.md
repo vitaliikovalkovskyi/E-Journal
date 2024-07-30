@@ -52,10 +52,15 @@ Open a web browser and go to http://127.0.0.1:8000/home to view the application.
 Log in to the admin panel (only after registering an admin profile, step 7) at http://127.0.0.1:8000/admin.
 ## Project structure
 manage.py: The main file for project management.
+
 journal/: The main project configuration.
+
 journal_app/: The main application logic.
+
 templates/: HTML templates.
+
 static/: Static files (CSS, JS, images).
+
 ## License
 This project is licensed under the MIT license.
 
