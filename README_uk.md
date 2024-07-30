@@ -1,4 +1,4 @@
-# Journal Project
+# E - Journal
 
 [![English](https://img.shields.io/badge/Language-English-green)](README_en.md)
 
