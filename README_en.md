@@ -48,6 +48,7 @@ This project is a web application for logging, built with Django.
 
 ## Usage
 Open a web browser and go to http://127.0.0.1:8000/home to view the application.
+
 Log in to the admin panel (only after registering an admin profile, step 7) at http://127.0.0.1:8000/admin.
 ## Project structure
 manage.py: The main file for project management.
