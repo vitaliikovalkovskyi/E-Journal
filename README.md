@@ -1,1 +1,1 @@
-# Journal
+# E - Journal
