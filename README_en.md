@@ -53,4 +53,3 @@ static/: Static files (CSS, JS, images).
 ## License
 This project is licensed under the MIT license.
 
-Translated with DeepL.com (free version)
