@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h1 style="margin-bottom: -10px;">Your Group</h1>
+        {% if user.is_authenticated %}
+        {% if user.is_student %}
+        {% with student=user.student_profile %}
+        {% if student %}
+
+
+
+
+        <h3>{{ student.group.group_name }}</h3>
+        {% for x in students %}
+        {% if x.group.group_name == student.group.group_name %}
+        {% if x.username == user.username %}
+        <p> {{ x.user.username }} | Name: {{ x.fullname }} </p>
+
+        {% else %}
+        <p> {{ x.user.username }} | Name: {{ x.fullname }} </p>
+        {% endif %}
+        {% endif %}
+
+
+        {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+        {% endif %}
+        {% endif %}
+    </div>
+    <div style = 'margin-top: -980px;'class="form-container">
+        <h1 style="margin-bottom: 5vh;">Watch your marks</h1>
+        <a class="nav-link" href="{% url 'your_grade_table' %}"> Watch Marks </a>
+    </div>
+</div>
+
+
+{% endblock %}

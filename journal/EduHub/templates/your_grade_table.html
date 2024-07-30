@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="color: white; width: 1187px;" class="form-container">
+    <h1>Your Name: {{ user.username }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Module 1</th>
+                <th>Module 2</th>
+                <th>Module 3</th>
+                <th>Module 4</th>
+                <th>Final Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in grades %}
+                {% if x.student.username == user.username %}
+                    <tr>
+                        <td>{{ x.course.course_name }}</td>
+                        <td>{{ x.module1 }}</td>
+                        <td>{{ x.module2 }}</td>
+                        <td>{{ x.module3 }}</td>
+                        <td>{{ x.module4 }}</td>
+                        <td>{{ x.grade }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

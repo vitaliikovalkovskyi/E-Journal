@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+
+
+<img class = 'image_logo' src="{% static 'images/logo.png' %}" alt="Description of the image">
+
+<h1>Students</h1>
+  
+<ul>
+  {% for y in groups %}
+    {% for x in students %}
+      {% if y.group_name == needed_name and y.group_id == x.group_id %}
+        <li>{{ x.firstname }} {{ x.lastname }}</li>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</ul>
+
+</body>

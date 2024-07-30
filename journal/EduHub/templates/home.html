@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<hr>
+
+{% if user.is_authenticated and user.is_student %}
+<div style="display: flex; align-items: center; justify-content: center; height: auto;" class="form-container">
+    <a style = 'margin-top: 15px;' class="nav-link" href="{% url 'your_group' %}">Your Group</a>
+    <a class="nav-link" href="{% url 'your_group' %}">Your Group</a>
+    <a class="nav-link" href="{% url 'your_group' %}">Your Group</a>
+    <a class="nav-link" href="{% url 'your_group' %}">Your Group</a>
+    <a class="nav-link" href="{% url 'your_group' %}">Your Group</a>
+
+</div>
+
+<form method="post" action="{% url 'logout' %}">
+    
+    {% csrf_token %}
+    <div class="logoutStyle ">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input class='nav-link' type="submit" value="Log Out">
+        </form>
+    </div>
+</form>
+<p>ty student!</p>
+
+{% elif user.is_authenticated and user.is_teacher %}
+
+
+<div class='form-container '>
+    <h1>Your Courses</h1>
+    {% for course in courses %}
+    {% if course.teacher.username == user.username and course.course_id %}
+    <a href="{% url 'course_detail' course.course_id %}">{{ course.course_name }}</a>
+    {% endif %}
+    {% endfor %}
+</div>
+<div class="logoutStyle ">
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input class='nav-link' type="submit" value="Log Out">
+    </form>
+</div>
+
+
+
+{% elif user.is_authenticated %}
+<p>ty admin!</p>
+
+
+
+<a class='nav-link' href="{% url 'login' %}">Login</a> |
+<a class='nav-link' href="{% url 'register' %}">Register</a>
+
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <div class="logoutStyle ">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input class='nav-link' type="submit" value="Log Out">
+        </form>
+    </div>
+</form>
+{% else %}
+<div class='form-container'>
+    <h1>Home page</h1>
+    <p>You need to authorize</p>
+
+
+    <a class='nav-link' href="{% url 'login' %}">Login</a>
+
+
+    {% comment %} <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <div class="logoutStyle ">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input class='nav-link' type="submit" value="Log Out">
+            </form>
+        </div>
+    </form> {% endcomment %}
+</div>
+
+{% endif %}
+{% endblock %}

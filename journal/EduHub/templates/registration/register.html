@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        
+
+    {% block content %}
+        <div class='form-container'>
+            <h1 class='header-login'>Register</h1>
+            <hr>
+            
+            <form action="{% url 'register' %}" method="post">
+                {{ form.username|add_placeholder:"Username" }}
+                {{ form.password1|add_placeholder:"Введіть Пароль" }}
+                {{ form.password2|add_placeholder:"Повторіть Пароль" }}
+                {{ form.email|add_placeholder:"Email" }}
+                {{ form.role|add_placeholder:"Role" }}
+                
+                {{ form.group|add_placeholder:"Group" }}
+                {{ form.first_name|add_placeholder:"First Name" }}
+                {{ form.last_name|add_placeholder:"Last Name" }}
+                
+                {% csrf_token %}
+            <button type="submit" class="btn btn-success button">Submit</button>
+            </form>
+        </div>
+            {% endblock %}
+        
+    </div>
+</body>
+</html>

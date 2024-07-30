@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<hr>
+
+{% if form.errors %}
+<p>{{ form.errors.error }}</p>
+{% endif %}
+<div class='form-container'>
+        <h1 class='header-login'>Login</h1>
+        <form action="{% url 'login' %}" method="post">
+        {{ form.username|add_placeholder:"Username" }}
+        {{ form.password|add_placeholder:"Password" }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success nav-link">Submit</button>
+        </form>
+        <a class='link-reset'href="{% url 'password_reset' %}">Forgot password?</a>
+    </div>
+{% endblock %}

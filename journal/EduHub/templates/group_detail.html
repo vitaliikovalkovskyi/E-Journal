@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block content %}
+
+
+<hr>
+
+<form method="post">
+    <div style='width:150vh; color: white;' class='form-container'>
+        <h1>Grades</h1>
+        {% csrf_token %}
+        {% for student in students %}
+        <div class="student-grade">
+            <p>{{ student.fullname }}</p>
+            {% with form=grade_forms|get_item:student.stud_id %}
+                <div class="grade-fields">
+                    {% for field in form %}
+                    <div class="field-wrapper">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endwith %}
+        </div>
+        {% endfor %}
+        <button class='nav-link'type="submit">Submit Grades</button>
+    </div>
+</form>
+
+{% endblock %}
