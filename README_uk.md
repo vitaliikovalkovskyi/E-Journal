@@ -24,7 +24,7 @@
 
 4. Активуйте віртуальне середовище:
    ```bash
-   ./Scripts/activate
+   .\venv\Scripts\Activate.ps1
 
 5. Перейдіть у директорію journal:
    ```bash
